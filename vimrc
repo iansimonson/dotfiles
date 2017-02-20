@@ -4,7 +4,7 @@ set nocompatible
 "PLUGINS
 "---------------------------------------------------------------
 
-call plug#begin('$HOME/.config/nvim/plugged')
+call plug#begin('$HOME/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
