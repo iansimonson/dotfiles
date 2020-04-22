@@ -1,49 +1,17 @@
-"----------------------------------------------------------------
-"PLUGINS
-"---------------------------------------------------------------
+call plug#begin(stdpath('data') . '/plugged')
 
-call plug#begin('$HOME/.config/nvim/plugged')
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'ziglang/zig.vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'rking/ag.vim'
-Plug 'justinmk/vim-syntax-extra'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
-"----------------------------------------------------------------
-"PLUGIN OPTIONS
-"---------------------------------------------------------------
- let g:ackprg='ag --nogroup --nocolor --column'
+colorscheme zenburn
 
-" Airline
- let g:airline#extensions#tabline#enabled = 1
- let g:airline#extensions#tabline#left_sep = ' '
- let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" Ctrl-P
- let g:ctrlp_map = '<c-p>'
- let g:ctrlp_cmd = 'CtrlP'
-
- " cpp enhanced highlighting
- let g:cpp_class_scope_highlight = 1
- "let g:cpp_experimental_template_highlight = 1
-
-"----------------------------------------------------------------
-"Settings
-"---------------------------------------------------------------
-set statusline= "%{fugitive#statusline()}"
+set splitbelow
+set splitright
 set ignorecase
-set smartcase
-set noswapfile
-set nobackup
-set laststatus=2
-set mouse=c
 
 "" Indentation
 set tabstop=4
@@ -55,29 +23,31 @@ set autoindent
 set smartindent
 
 "" UI
-set lazyredraw
-set background=dark
-colorscheme gruvbox
-set showmatch
-set hlsearch
-set incsearch
 set relativenumber
 set number
-set ruler
-set splitbelow
-set splitright
 
-set title
-set titlestring=NVIM:\ %-25.55F\ %a%r%m titlelen=70
+let mapleader = ","
 
-"" Code Specific settings
-set foldmethod=syntax
-set foldlevel=99 "" unfolded to start
-
-nmap <silent> <F5> :call ClangCheck()<CR><CR>
-
-"" Necessary key rebindings
+" movement
+nnoremap <C-L> <C-W>l
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
+
+" split properly
+nnoremap <leader>V <C-W>v
+nnoremap <leader>S <C-W>s
+
+" edit and reload main config
+nnoremap <leader>ev :exe 'edit '.stdpath('config').'/init.vim'<CR>
+nnoremap <leader>sv :exe 'source '.stdpath('config').'/init.vim'<CR>
+
+" fzf search git files (basically search in repo)
+nnoremap <leader>f :GFiles<CR>
+" fzf search all files in pwd
+nnoremap <leader>F :Files<CR>
+" fzf search buffers
+nnoremap <leader>b :Buffers<CR>
+" fzf search in file
+nnoremap <leader>sf :BLines<CR>
+nnoremap <silent> <leader>/ :nohl<CR>
