@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/Users/ian/local/odin/vendor/glfw/bindings'
+let g:netrw_dirhist_9='/Users/ian/development/odin/raytracer_iow_odin/rt'
+let g:netrw_dirhist_8='/Users/ian/development/zig/ztor'
+let g:netrw_dirhist_7='/Users/ian/development/zig/sdl/sdl'
+let g:netrw_dirhist_6='/Users/ian/development/odin/raytracer_iow_odin'
+let g:netrw_dirhist_5='/Users/ian/development/odin/single_files'
+let g:netrw_dirhist_4='/Users/ian/development/nim/nia_chat_app'
+let g:netrw_dirhist_3='/Users/ian/development/odin/otor/src'
+let g:netrw_dirhist_2='/Users/ian/development/odin/otor'
+let g:netrw_dirhist_1='/Users/ian/development/zig/zig/src/stage1'
