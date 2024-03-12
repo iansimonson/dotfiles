@@ -15,32 +15,22 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-vim.cmd([[
-    autocmd CompleteDone * silent! pclose
-    
-    set splitbelow
-    set splitright
-    set ignorecase
-    set hidden
-    ]])
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.ignorecase = true
+vim.opt.hidden = true
 
-vim.cmd([[
-    "" Indentation
-    set tabstop=4
-    set shiftwidth=4
-    set softtabstop=4
-    set smarttab
-    set expandtab
-    set autoindent
-    set smartindent
-    ]])
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
 
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
-vim.cmd([[
-    "" UI
-    set relativenumber
-    set number
-    ]])
+vim.opt.relativenumber = true
+vim.opt.number = true
 
 -- Split nicely
 vim.keymap.set('n', '<leader>V', '<C-W>v', {noremap = true})
