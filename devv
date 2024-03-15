@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+DEV=$1
+
+if [ ! -d "$DEV" ];then
+    echo "ERROR: $DEV does not exist" 1>&2
+    exit
+fi
+
+PROJ_NAME=$(basename "$DEV")
+tmux has-session -t "$PROJ_NAME" || tmux new-session -d -s "$PROJ_NAME" -c "$DEV"
+
+if [ -n "$TMUX" ]
+then
+    tmux switch-client -t "$PROJ_NAME"
+else
+    tmux attach-session -t "$PROJ_NAME"
+fi
