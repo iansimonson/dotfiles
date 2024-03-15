@@ -1,14 +1,18 @@
 return {
-    {'flazz/vim-colorschemes',
-    lazy = false,
-    config = function()
-        vim.cmd([[
+    { 'nvim-lua/plenary.nvim' },
+    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    {
+        'flazz/vim-colorschemes',
+        lazy = false,
+        config = function()
+            vim.cmd([[
         set termguicolors
         set background=dark
         syntax on
         colorscheme zenburn
         ]])
-    end},
+        end
+    },
     --{
     --    'flrnd/candid.vim',
     --    lazy = false,
