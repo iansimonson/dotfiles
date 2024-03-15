@@ -2,14 +2,18 @@
 
 set -e
 
+DEFAULT_DEV_DIR="$HOME/dev"
 DEV=$1
 
 if [ ! -d "$DEV" ];then
-    echo "ERROR: $DEV does not exist" 1>&2
-    exit
+    DEV="$DEFAULT_DEV_DIR/$DEV"
+    if [ ! -d "$DEV" ];then
+        echo "ERROR: $DEV does not exist" 1>&2
+        exit
+    fi
 fi
 
-PROJ_NAME=$(basename "$DEV")
+PROJ_NAME=$(basename "$DEV" | tr ".:" "_")
 tmux has-session -t "$PROJ_NAME" || tmux new-session -d -s "$PROJ_NAME" -c "$DEV"
 
 if [ -n "$TMUX" ]
