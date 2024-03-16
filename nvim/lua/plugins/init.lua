@@ -1,6 +1,6 @@
 return {
     { 'nvim-lua/plenary.nvim' },
-    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim', }, opts = { signs = false } },
     {
         'flazz/vim-colorschemes',
         lazy = false,
@@ -27,4 +27,13 @@ return {
     --    end,
     --},
     'tpope/vim-fugitive',
+    {
+        'numToStr/Comment.nvim',
+        opts = {
+            lazy = false,
+        },
+        config = function()
+            require('Comment').setup()
+        end,
+    },
 }

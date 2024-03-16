@@ -15,7 +15,7 @@ return {
                 ensure_installed = { "c", "lua", "odin" },
                 sync_install = false,
                 auto_install = true,
-                hightlight = {
+                highlight = {
                     enable = true,
                 },
             }

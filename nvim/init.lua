@@ -1,23 +1,9 @@
 vim.g.mapleader = ','
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup("plugins")
-
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.hidden = true
 
 vim.opt.tabstop = 4
@@ -31,6 +17,13 @@ vim.opt.smartindent = true
 
 vim.opt.relativenumber = true
 vim.opt.number = true
+
+vim.opt.showmode = false
+vim.opt.clipboard = 'unnamedplus'
+
+-- these are from kickstart.nvim
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 -- Split nicely
 vim.keymap.set('n', '<leader>V', '<C-W>v', {noremap = true})
@@ -47,3 +40,26 @@ vim.keymap.set('n', '<leader>cc', ':silent! pclose', {noremap = true})
 
 -- remove find highlighting
 vim.keymap.set('n', '<leader>/', ':nohl<CR>', {noremap = true})
+
+-- shortcuts for diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- enable plugins
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
+
