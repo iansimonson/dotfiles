@@ -47,6 +47,17 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+-- terminal stuff
+vim.keymap.set('t', '<leader><Esc>', '<C-\\><C-n>')
+
+vim.api.nvim_create_autocmd('TermOpen', {
+    group = vim.api.nvim_create_augroup('default-terminal-dressing', {clear = true}),
+    callback = function(_)
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+    end,
+})
+
 -- enable plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

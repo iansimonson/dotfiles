@@ -51,7 +51,7 @@ return {
                     -- Buffer local mappings.
                     -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local map = function(keys, func, desc)
-                        vim.keymap.set('n', keys, func, {buffer = ev.buf, description = 'LSP: ' .. desc})
+                        vim.keymap.set('n', keys, func, {buffer = ev.buf, desc = 'LSP: ' .. desc})
                     end
 
                     -- most used probably
@@ -59,14 +59,16 @@ return {
                     map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
                     map('K', vim.lsp.buf.hover, 'Hover Do[K]umentation')
                     -- TODO: replace this with telescope fuzzy finding
-                    map('<leader>ds', vim.lsp.buf.document_symbols, '[D]ocument [S]ymbols')
+                    -- map('<leader>ds', vim.lsp.buf.document_symbols, '[D]ocument [S]ymbols')
 
-                    map('<leader>f', function() vim.lsp.buf.format { async = true } end, '[F]ormat')
+                    map('<leader>df', function()
+                        vim.lsp.buf.format { async = true }
+                    end, '[F]ormat')
 
                     -- used occasionally?
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                     map('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-                    map('<C-h>', vim.lsp.buf.signature_help, 'Signature Help')
+                    vim.keymap.set('i', '<C-h>', vim.lsp.buf.signature_help, {buffer = ev.buf, desc = 'LSP: Signature Help'})
 
                     -- useful in some LSPs but not all/many
                     map('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
