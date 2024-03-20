@@ -28,17 +28,10 @@ return {
             vim.keymap.set('n', '<leader>b', builtin.buffers, {})
 
             vim.keymap.set('n', '<leader>sf', function()
-                -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-                builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-                    winblend = 10,
+                builtin.current_buffer_fuzzy_find({
                     previewer = false,
                 })
             end, { desc = '[sf] Fuzzily search in current buffer' })
-
-            -- map('n', '<leader>f', ':GFiles<CR>', { noremap = true })
-            -- map('n', '<leader>F', ':Files<CR>', { noremap = true })
-            -- map('n', '<leader>b', ':Buffers<CR>', { noremap = true })
-            -- map('n', '<leader>sf', ':BLines<CR>', { noremap = true })
         end,
     },
     --[[ { 'junegunn/fzf', build = 'fzf#install()' },
