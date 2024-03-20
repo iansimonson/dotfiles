@@ -22,7 +22,7 @@ return {
             vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
             vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
             vim.keymap.set('n', '<leader>f', builtin.git_files, { desc = '[f]ind git files' })
-            vim.keymap.set('n', '<leader>sF', builtin.find_files, { desc = '[F]ind files' })
+            vim.keymap.set('n', '<leader>F', builtin.find_files, { desc = '[F]ind files' })
             vim.keymap.set('n', '<leader>sg', builtin.live_grep, {})
             vim.keymap.set('n', '<leader>ss', builtin.grep_string, {})
             vim.keymap.set('n', '<leader>b', builtin.buffers, {})
