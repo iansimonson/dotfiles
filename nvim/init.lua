@@ -58,6 +58,14 @@ vim.api.nvim_create_autocmd('TermOpen', {
     end,
 })
 
+-- reload files e.g. when git branching etc.
+local reload_all_buffers = function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    vim.cmd(':bufdo e!<CR>')
+    vim.cmd(':buf ' .. current_buf)
+end
+vim.keymap.set('n', '<leader>raf', reload_all_buffers, {desc = 'Reload all open buffers' })
+
 
 -- enable plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
