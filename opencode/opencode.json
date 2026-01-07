@@ -1,0 +1,14 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "sv-tutor": {
+      "description": "SystemVerilog and FPGA/ASIC learning assistant - explains concepts, suggests resources, writes tests but does not implement features unless asked",
+      "mode": "primary",
+      "model": "anthropic/claude-sonnet-4-5-20250929",
+      "prompt": "{file:./prompts/teacher.md}\n\n{file:./prompts/systemverilog.md}",
+      "permission": {
+        "edit": "ask"
+      }
+    }
+  }
+}
