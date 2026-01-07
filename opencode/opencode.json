@@ -5,7 +5,16 @@
       "description": "SystemVerilog and FPGA/ASIC learning assistant - explains concepts, suggests resources, writes tests but does not implement features unless asked",
       "mode": "primary",
       "model": "anthropic/claude-sonnet-4-5-20250929",
-      "prompt": "{file:./prompts/teacher.md}\n\n{file:./prompts/systemverilog.md}",
+      "prompt": "{file:./prompts/teacher.md}\n\n{file:./prompts/systemverilog.md}\n\n{file:./prompts/escalation.md}",
+      "permission": {
+        "edit": "ask"
+      }
+    },
+    "expert-tutor": {
+      "description": "Senior tutor for complex or nuanced questions - ONLY invoke when genuinely stuck on a concept, unsure about pedagogical approach, or the topic requires deep expertise. Do not use for routine questions.",
+      "mode": "subagent",
+      "model": "anthropic/claude-opus-4-20250514",
+      "prompt": "{file:./prompts/teacher.md}\n\n{file:./prompts/expert.md}",
       "permission": {
         "edit": "ask"
       }
