@@ -14,26 +14,6 @@ return {
             maslsp.setup {
                 ensure_installed = { "lua_ls", "ols", "asm_lsp", "clangd" }
             }
-            maslsp.setup_handlers {
-                function(server_name)
-                    require('lspconfig')[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-                ["lua_ls"] = function()
-                    require('lspconfig').lua_ls.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { 'vim' }
-                                }
-                            }
-                        }
-
-                    })
-                end
-            }
         end,
         dependencies = {'mason.nvim', 'nvim-cmp'}
     },
